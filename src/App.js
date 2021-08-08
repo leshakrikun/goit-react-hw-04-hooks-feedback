@@ -5,32 +5,27 @@ import Section from './components/Section/section';
 
 export default function App () {
   
-  let [good, setGood] = useState(0);
-  let [neutral, setNeutral] = useState(0);
-  let [bad, setBad] = useState(0);
-  let stats = [good, neutral, bad]
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+  const stats = [good, neutral, bad]
 
-  const handleGood = () => {
-    setGood(state => state + 1);
+  const handleType = (type) => {
+    type(state => state + 1);
   }
-  const handleNeutral = () => {
-    setNeutral(state => state + 1);
-  }
-  const handleBad = () => {
-    setBad(state => state + 1);
-  }
-
-  const quantity = e => {
+ 
+ /*  handleType(`handle`&`e.target.textContent`) */
+   const quantity = e => {
     if(e.target.textContent==='good') {
-        handleGood()
+        handleType(setGood)
         return
     } else if(e.target.textContent==='neutral') {
-        handleNeutral()
+        handleType(setNeutral)
         return
     } else {
-        handleBad()
+        handleType(setBad)
     }}
-
+  
   return (
     <>
     <Section title = "Please leave feedback">
